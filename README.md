@@ -119,21 +119,6 @@ build.bat
 **Q：如何自检？**
 `python core.py --selftest`：自动构造测试照片，跑完扫描 → 预览 → 执行 → 撤销并断言结果。
 
-## 上传到 GitHub
-
-解压源码包后得到仓库目录（本包内为 `PhotoBatch/`）：
-
-```bash
-cd PhotoBatch
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin <你的仓库地址>
-git push -u origin main
-```
-
-`.gitignore` 已排除 `*.exe`、`dist/`、`build/`、`__pycache__/`、`journals/*.json`。建议把 exe 放到 GitHub **Releases** 而不是仓库里。
-
 ## 许可证
 
 未指定。若要公开发布，请自行添加 `LICENSE` 文件。
