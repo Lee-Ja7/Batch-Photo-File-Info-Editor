@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>照片信息批量处理助手by清風 · Windows / Android 批量修改照片信息</title>
+<meta name="description" content="Windows + Android 双平台工具：批量修改照片的文件名、创建/修改/访问时间、只读/隐藏/存档属性与 EXIF 拍摄日期。完全离线、先预览后执行、支持一键撤销。Windows 单文件 14.8 MB，安卓 1.3 MB。">
+<meta name="theme-color" content="#3470EE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="照片信息批量处理助手by清風">
+<meta property="og:description" content="一次导入，批量改好照片的全部信息。Windows / Android 双平台 · 完全离线 · 可一键撤销。">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="scroll-progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top" aria-label="返回首页">
+      <img src="assets/logo.png" alt="" width="44" height="42" class="brand-logo">
+      <span class="brand-txt">
+        <b>照片信息批量处理助手</b>
+        <em>by清風</em>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#features" class="nav-link">核心功能</a>
+      <a href="#platforms" class="nav-link">双平台</a>
+      <a href="#traits" class="nav-link">功能特性</a>
+      <a href="#start" class="nav-link">快速上手</a>
+      <a href="#faq" class="nav-link">常见问题</a>
+      <a href="#download" class="nav-link">下载</a>
+      <a href="#contact" class="nav-link">联系</a>
+    </nav>
+
+    <div class="hdr-act">
+      <a class="btn btn-primary btn-sm" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">
+        <span>下载</span>
+      </a>
+      <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="#features">核心功能</a>
+    <a href="#platforms">双平台</a>
+    <a href="#traits">功能特性</a>
+    <a href="#start">快速上手</a>
+    <a href="#faq">常见问题</a>
+    <a href="#download">下载</a>
+    <a href="#contact">联系</a>
+    <a class="btn btn-primary btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">前往 GitHub Releases 下载</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="grid-lines"></div>
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+    </div>
+    <div class="wrap hero-in">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">
+          <span class="dot"></span>Windows + Android · v1.1.1 · 完全离线
+        </p>
+        <h1>一次导入<br><span class="hl">批量改好</span>照片的全部信息</h1>
+        <p class="lead">
+          文件名、创建/修改/访问时间、只读/隐藏/存档属性、EXIF 拍摄日期——
+          四类信息一次配置、<b>先预览后执行</b>，每一步都有日志，随时一键撤销。
+          电脑与手机同一套规则引擎，装哪台都能用。
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            免费下载 · Windows / Android
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#start">查看快速上手</a>
+        </div>
+        <ul class="hero-meta">
+          <li>Windows 14.8 MB</li>
+          <li>Android 1.3 MB</li>
+          <li>数据不出本机</li>
+        </ul>
+      </div>
+
+      <!-- 应用窗口 mock -->
+      <div class="hero-visual reveal" style="--i:2" aria-hidden="true">
+        <div class="mock">
+          <div class="mock-bar">
+            <img src="assets/logo.png" alt="" width="26" height="25">
+            <span class="mock-title">照片信息批量处理助手by清風</span>
+            <span class="mock-dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="mock-steps">
+            <span class="ms on"><b>1</b>导入照片</span>
+            <i class="ms-line"></i>
+            <span class="ms on"><b>2</b>配置规则</span>
+            <i class="ms-line"></i>
+            <span class="ms"><b>3</b>生成预览</span>
+            <i class="ms-line"></i>
+            <span class="ms"><b>4</b>执行 / 撤销</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-panel">
+              <div class="mock-tabs">
+                <span class="mt on">文件名</span><span class="mt">文件日期</span>
+                <span class="mt">文件属性</span><span class="mt">EXIF</span>
+              </div>
+              <div class="mock-field">
+                <label>命名模板</label>
+                <code>{date:yyyyMMdd}_{seq:000}</code>
+              </div>
+              <div class="mock-row">
+                <span>起始序号</span><b class="pill">001</b>
+              </div>
+              <div class="mock-row">
+                <span>包含子文件夹</span><b class="sw on"><i></i></b>
+              </div>
+              <div class="mock-btn">生成修改预览</div>
+            </div>
+            <div class="mock-list">
+              <div class="mock-li"><i class="ck on"></i><span class="old">IMG_20240705(3).jpg</span><em>→</em><span class="new">20240705_001.jpg</span></div>
+              <div class="mock-li"><i class="ck on"></i><span class="old">IMG_20240712(1).jpg</span><em>→</em><span class="new">20240712_002.jpg</span></div>
+              <div class="mock-li"><i class="ck on"></i><span class="old">photo (2).jpeg</span><em>→</em><span class="new">20240718_003.jpg</span></div>
+              <div class="mock-li"><i class="ck"></i><span class="old">WeChat图_20240718.jpg</span><em>→</em><span class="new">20240718_004.jpg</span></div>
+              <div class="mock-li"><i class="ck on"></i><span class="old">DSC_0341.JPG</span><em>→</em><span class="new">20240701_005.jpg</span></div>
+              <div class="scanline"></div>
+            </div>
+          </div>
+        </div>
+        <p class="mock-cap">界面示意 · 实际以应用内为准</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 核心功能 ============ -->
+  <section class="sec sec-alt" id="features">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">核心功能</p>
+        <h2>四类信息，一处配置</h2>
+        <p class="sec-sub">每个页签只做一件事，组合起来就是一次完整整理：改完名字、对齐时间、收拾属性、补上 EXIF。</p>
+      </header>
+
+      <div class="cards c4">
+        <article class="card reveal" style="--i:0">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M4 12h16M4 17h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5l3 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>文件名</h3>
+          <p>模板变量命名、序号补零、查找替换（支持正则）、前后缀、大小写统一。</p>
+          <ul class="ticks">
+            <li>两阶段重命名，A→B、B→C 不会互相覆盖</li>
+            <li>扩展名自动补全，无需手写</li>
+          </ul>
+          <code class="inline-code">{date:yyyyMMdd}_{seq:000}</code>
+        </article>
+
+        <article class="card reveal" style="--i:1">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>文件日期</h3>
+          <p>创建时间、修改时间、访问时间，走 Windows 原生 API，含真正的「创建时间」。</p>
+          <ul class="ticks">
+            <li>来源：固定值 / 叠加偏移 / EXIF 回填</li>
+            <li>也可从文件名解析日期</li>
+          </ul>
+          <code class="inline-code">2024-07-05 09:41</code>
+        </article>
+
+        <article class="card reveal" style="--i:2">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15.5" cy="12" r="2.5" fill="currentColor"/></svg>
+          </div>
+          <h3>文件属性</h3>
+          <p>只读、隐藏、存档、系统四项属性，每项三态：保持原样 / 置位 / 清除。</p>
+          <ul class="ticks">
+            <li>隐藏与只读写入前会自动处理权限</li>
+            <li>写入完成后统一恢复属性</li>
+          </ul>
+          <code class="inline-code">只读 · 隐藏 · 存档 · 系统</code>
+        </article>
+
+        <article class="card reveal" style="--i:3">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11h8M8 15h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>EXIF</h3>
+          <p>拍摄时间、数字化时间、DateTime，支持固定值、偏移、回填与清除。</p>
+          <ul class="ticks">
+            <li>可把 EXIF 拍摄日期回填为文件时间</li>
+            <li>支持 JPEG / TIFF / WebP</li>
+          </ul>
+          <code class="inline-code">DateTimeOriginal</code>
+        </article>
+      </div>
+
+      <!-- 模板变量 -->
+      <div class="vars reveal">
+        <div class="vars-hd">
+          <h3>命名模板变量</h3>
+          <p>写进模板即可自动替换；扩展名会自动补上，模板里无需书写。</p>
+        </div>
+        <div class="vars-grid">
+          <div class="vrow"><code>{date:yyyyMMdd}</code><span>目标日期（来自「日期」页规则）</span></div>
+          <div class="vrow"><code>{exifdate:yyyy-MM-dd_HHmmss}</code><span>EXIF 拍摄日期</span></div>
+          <div class="vrow"><code>{created:...}</code><span>文件创建时间</span></div>
+          <div class="vrow"><code>{modified:...}</code><span>文件修改时间</span></div>
+          <div class="vrow"><code>{accessed:...}</code><span>文件访问时间</span></div>
+          <div class="vrow"><code>{seq}</code><span>序号，可写 <b>{seq:000}</b> 补零</span></div>
+          <div class="vrow"><code>{stem}</code><span>原主名</span></div>
+          <div class="vrow"><code>{ext}</code><span>扩展名</span></div>
+          <div class="vrow"><code>{name}</code><span>原全名</span></div>
+          <div class="vrow"><code>{folder}</code><span>所在文件夹名</span></div>
+          <div class="vrow"><code>{width} {height}</code><span>图片尺寸</span></div>
+          <div class="vrow"><code>{sizekb}</code><span>文件体积（KB）</span></div>
+          <div class="vrow"><code>{hash8}</code><span>文件头 MD5 前 8 位</span></div>
+          <div class="vrow"><code>{parent}</code><span>完整路径</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 功能特性 ============ -->
+  <section class="sec" id="traits">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">功能特性</p>
+        <h2>批量改文件，最怕改坏</h2>
+        <p class="sec-sub">所以它的每一步都留了退路：先给你看会发生什么，动手前后都记日志，出问题能整批撤回。</p>
+      </header>
+
+      <div class="cards c3">
+        <article class="trait reveal" style="--i:0">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>完全离线</h3>
+          <p>Windows 端本地服务只监听 <code>127.0.0.1</code>；Android 端根本没有声明网络权限。断网也能用，文件不上传。</p>
+        </article>
+
+        <article class="trait reveal" style="--i:1">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>轻装：14.8 MB / 1.3 MB</h3>
+          <p>Windows 是一个 exe 双击即用，不需要装 Python、不写注册表；安卓安装包只有 1.3 MB。两端都不弹广告。</p>
+        </article>
+
+        <article class="trait reveal" style="--i:2">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="currentColor"/></svg>
+          </div>
+          <h3>先预览，后执行</h3>
+          <p>逐条 diff 对照：改名前后、时间变化、属性与 EXIF 改动，冲突和警告会提前标出来。</p>
+        </article>
+
+        <article class="trait reveal" style="--i:3">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9a8 8 0 1 0 2.3-4.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 4v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>日志 + 一键撤销</h3>
+          <p>每步成功后立即落盘到 <code>journals/</code>，撤销时按反序还原文件名、时间戳、属性与 EXIF。</p>
+        </article>
+
+        <article class="trait reveal" style="--i:4">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>两阶段重命名</h3>
+          <p>先把所有文件改成临时唯一名，再改成目标名，彻底避免 <code>A→B</code>、<code>B→C</code> 的链式覆盖。</p>
+        </article>
+
+        <article class="trait reveal" style="--i:5">
+          <div class="trait-ic">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v6m0 6v6M3 12h6m6 0h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>顺序有讲究</h3>
+          <p>固定按「写 EXIF → 重命名 → 写时间戳 → 写属性」执行：改名与 EXIF 都会刷新修改时间，所以时间必须最后写。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 快速上手 ============ -->
+  <section class="sec sec-alt" id="start">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">快速上手</p>
+        <h2>四步，一批照片就整好了</h2>
+        <p class="sec-sub">第一次启动需要 2–4 秒解压，之后双击即开。界面里四步走完，就是一次完整处理。</p>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal" style="--i:0">
+          <b class="step-n">1</b>
+          <h3>导入照片</h3>
+          <p>点「选择文件夹」或「选择文件」，也可以直接粘贴路径后点「扫描导入」。需要连子目录就勾上「包含子文件夹」。</p>
+        </li>
+        <li class="step reveal" style="--i:1">
+          <b class="step-n">2</b>
+          <h3>配置规则</h3>
+          <p>在「文件名 / 文件日期 / 文件属性 / EXIF」四个页签里按需开启。只用其中一项也可以，其余保持原样。</p>
+        </li>
+        <li class="step reveal" style="--i:2">
+          <b class="step-n">3</b>
+          <h3>生成预览</h3>
+          <p>点「生成修改预览」，逐条核对改名前后与各项改动，确认无误再继续。</p>
+        </li>
+        <li class="step reveal" style="--i:3">
+          <b class="step-n">4</b>
+          <h3>执行 / 撤销</h3>
+          <p>二次确认后开始写入。任何时候都能打开「操作日志」，一键撤销本次全部改动。</p>
+        </li>
+      </ol>
+
+      <div class="devbox reveal">
+        <div class="dev-col">
+          <h3>从源码运行</h3>
+          <pre><code>pip install -r requirements.txt
+python app.py</code></pre>
+          <p class="hint">要求 Python 3.11+（本项目在 3.13 验证）与 Edge WebView2 Runtime。</p>
+        </div>
+        <div class="dev-col">
+          <h3>自己构建 exe</h3>
+          <pre><code>build.bat</code></pre>
+          <p class="hint">产物在 <code>dist\PhotoStudio.exe</code>，重命名为正式名称即可分发。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 双平台 ============ -->
+  <section class="sec" id="platforms">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">双平台</p>
+        <h2>电脑整批理，手机随手改</h2>
+        <p class="sec-sub">两个版本共用同一套规则引擎、同一执行顺序、同样「先预览后执行」。安装包统一放在 GitHub Releases，点一下就是最新版。</p>
+      </header>
+
+      <div class="plats">
+        <article class="plat reveal" style="--i:0">
+          <div class="plat-hd">
+            <span class="plat-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 5.5l7.2-1v7.1H3zM11.4 4.3L21 3v8.6h-9.6zM3 12.6h7.2v7.1L3 18.5zM11.4 12.6H21V21l-9.6-1.3z" fill="currentColor"/></svg>
+            </span>
+            <div>
+              <h3>Windows 版</h3>
+              <p>桌面 · 单文件 exe</p>
+            </div>
+            <span class="plat-badge">v1.1.1</span>
+          </div>
+          <ul class="plat-spec">
+            <li><b>14.8 MB</b><span>免安装，双击即用</span></li>
+            <li><b>Windows 10 / 11</b><span>64 位</span></li>
+            <li><b>四类信息全功能</b><span>含真实创建时间</span></li>
+            <li><b>本地 127.0.0.1</b><span>不联网不上传</span></li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">下载 Windows 版</a>
+          <p class="plat-note">下载后在 GitHub Releases 里选 <code>.exe</code> 附件即可。</p>
+        </article>
+
+        <article class="plat reveal" style="--i:1">
+          <div class="plat-hd">
+            <span class="plat-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 2.5h10a1.6 1.6 0 0 1 1.6 1.6v15.8A1.6 1.6 0 0 1 17 21.5H7a1.6 1.6 0 0 1-1.6-1.6V4.1A1.6 1.6 0 0 1 7 2.5z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M10 5.2h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="18.2" r="1.15" fill="currentColor"/></svg>
+            </span>
+            <div>
+              <h3>Android 版</h3>
+              <p>手机 / 平板 · Material 3</p>
+            </div>
+            <span class="plat-badge">v1.1.0</span>
+          </div>
+          <ul class="plat-spec">
+            <li><b>1.3 MB</b><span>无广告、无多余依赖</span></li>
+            <li><b>Android 8.0+</b><span>minSdk 26</span></li>
+            <li><b>四页签</b><span>素材 / 规则 / 预览 / 记录</span></li>
+            <li><b>同样可撤销</b><span>日志存在应用私有目录</span></li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">下载 Android 版</a>
+          <p class="plat-note">下载后在 GitHub Releases 里选 <code>.apk</code> 附件，安装时允许「安装未知来源应用」。</p>
+        </article>
+      </div>
+
+      <div class="cmp reveal">
+        <h3>两版能力对照</h3>
+        <p class="cmp-sub">手机系统对文件元数据的开放程度不如桌面，差异如实写在下面，不做「完全一致」的承诺。</p>
+        <div class="cmp-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col">能力</th><th scope="col">Windows</th><th scope="col">Android</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>批量改名（模板 / 查找替换 / 大小写）</td>
+                <td class="yes">支持</td>
+                <td class="yes">支持</td>
+              </tr>
+              <tr>
+                <td>修改时间</td>
+                <td class="yes">支持</td>
+                <td class="part">支持<em>需授予存储权限，必要时回退到 MediaStore</em></td>
+              </tr>
+              <tr>
+                <td>访问时间</td>
+                <td class="yes">支持</td>
+                <td class="no">只读展示<em>系统接口不提供写入</em></td>
+              </tr>
+              <tr>
+                <td>创建时间</td>
+                <td class="yes">支持</td>
+                <td class="no">不支持<em>Linux 内核 btime 不可写</em></td>
+              </tr>
+              <tr>
+                <td>只读属性</td>
+                <td class="yes">支持</td>
+                <td class="yes">支持</td>
+              </tr>
+              <tr>
+                <td>隐藏属性</td>
+                <td class="yes">支持</td>
+                <td class="part">以「.」前缀代替<em>安卓无对应属性位</em></td>
+              </tr>
+              <tr>
+                <td>存档 / 系统属性</td>
+                <td class="yes">支持</td>
+                <td class="no">无对应属性</td>
+              </tr>
+              <tr>
+                <td>EXIF 拍摄日期</td>
+                <td class="yes">JPEG / TIFF / WebP</td>
+                <td class="part">JPEG / PNG / WebP<em>HEIC 仅读取</em></td>
+              </tr>
+              <tr>
+                <td>先预览 · 日志 · 一键撤销</td>
+                <td class="yes">支持</td>
+                <td class="yes">支持</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-note">执行顺序两端一致：写 EXIF → 两阶段重命名 → 写时间戳 → 写属性。撤销时按反序还原。<code>journals/</code> 在 Windows 位于 exe 同目录，在 Android 位于应用私有目录。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 版本与价格 ============ -->
+  <section class="sec" id="editions">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">版本与价格</p>
+        <h2>免费，且不藏功能</h2>
+        <p class="sec-sub">两个平台都不设试用期、没有导出限制、没有云端套餐。下载即全部功能可用。</p>
+      </header>
+
+      <div class="price price-3">
+        <article class="plan plan-main reveal" style="--i:0">
+          <p class="plan-tag">推荐</p>
+          <h3>Windows 免费版</h3>
+          <p class="plan-price"><b>¥0</b><span>永久免费</span></p>
+          <ul class="ticks big">
+            <li>四类信息全部功能，无数量限制</li>
+            <li>预览 / 执行 / 日志 / 一键撤销</li>
+            <li>完全离线，不上传任何文件</li>
+            <li>单文件 exe，14.8 MB</li>
+            <li>Windows 10 / 11 64 位</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">下载 Windows 版</a>
+        </article>
+
+        <article class="plan reveal" style="--i:1">
+          <p class="plan-tag ghost">移动端</p>
+          <h3>Android 免费版</h3>
+          <p class="plan-price"><b>¥0</b><span>永久免费</span></p>
+          <ul class="ticks big">
+            <li>改名 / 时间 / 属性 / EXIF 全在</li>
+            <li>预览 / 执行 / 日志 / 一键撤销</li>
+            <li>无网络权限，1.3 MB 安装包</li>
+            <li>Material 3 四页签界面</li>
+            <li>Android 8.0 及以上</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">下载 Android 版</a>
+        </article>
+
+        <article class="plan reveal" style="--i:2">
+          <p class="plan-tag ghost">开发者</p>
+          <h3>源码版</h3>
+          <p class="plan-price"><b>¥0</b><span>自行构建</span></p>
+          <ul class="ticks big">
+            <li>Python 端完整源码与 <code>build.bat</code></li>
+            <li>Android 端 Kotlin + Compose 工程</li>
+            <li>可二次开发、内网分发</li>
+            <li>许可证未指定，商用前请先确认</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor" target="_blank" rel="noopener">在 GitHub 查看源码</a>
+        </article>
+      </div>
+
+      <div class="spec reveal">
+        <h3>版本信息</h3>
+        <dl class="spec-list">
+          <div><dt>Windows 版本</dt><dd>1.1.1（文件版本 1.1.1.0）</dd></div>
+          <div><dt>Android 版本</dt><dd>1.1.0（versionCode 2）</dd></div>
+          <div><dt>Windows 体积</dt><dd>14.8 MB，单文件免安装</dd></div>
+          <div><dt>Android 体积</dt><dd>1.3 MB，APK</dd></div>
+          <div><dt>系统要求</dt><dd>Win 10 / 11（64 位）· Android 8.0+</dd></div>
+          <div><dt>运行依赖</dt><dd>Win：Edge WebView2 Runtime（一般已预装）</dd></div>
+          <div><dt>界面语言</dt><dd>简体中文</dd></div>
+          <div><dt>价格</dt><dd>免费</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec sec-alt" id="faq">
+    <div class="wrap wrap-narrow">
+      <header class="sec-hd reveal">
+        <p class="tag">常见问题</p>
+        <h2>你可能想问的</h2>
+      </header>
+
+      <div class="faq">
+        <details class="reveal" style="--i:0">
+          <summary>点「选择文件 / 选择文件夹」没反应？</summary>
+          <p>对话框直接用 Win32 原生 API 调用，不依赖 tkinter（精简版 Python 常缺 tcl/tk）。若仍无响应，可以直接在路径框粘贴完整路径，再点「扫描导入」。</p>
+        </details>
+        <details class="reveal" style="--i:1">
+          <summary>双击 exe 没有窗口？</summary>
+          <p>窗口基于系统自带的 Edge WebView2 Runtime。Win10/11 一般已预装；若缺失请先安装 WebView2，或用 <code>python app.py</code> 启动查看报错信息。</p>
+        </details>
+        <details class="reveal" style="--i:2">
+          <summary>EXIF 支持哪些格式？</summary>
+          <p>写入支持 <b>JPEG / TIFF / WebP</b>。HEIC、RAW、PNG 会跳过 EXIF 写入并在预览里提示，但不影响改名、日期与属性处理。</p>
+        </details>
+        <details class="reveal" style="--i:3">
+          <summary>改错了能恢复吗？</summary>
+          <p>能。每步成功后都会把操作写入 <code>journals/</code>，在「操作日志」里一键撤销即可按反序还原文件名、时间戳、属性与 EXIF。建议处理前先备份重要照片。</p>
+        </details>
+        <details class="reveal" style="--i:4">
+          <summary>日志存在哪里？</summary>
+          <p>保存在 exe 同目录的 <code>journals/</code>。所以请把 exe 放在可写目录，不要放在 <code>C:\Program Files</code> 下。</p>
+        </details>
+        <details class="reveal" style="--i:5">
+          <summary>需要联网吗？会上传照片吗？</summary>
+          <p>不需要，也不会。Windows 端本地服务只监听 <code>127.0.0.1</code>，不访问外网；Android 端安装包里根本没有声明网络权限，装好之后物理上无法联网。</p>
+        </details>
+        <details class="reveal" style="--i:6">
+          <summary>设为「隐藏」后文件不见了？</summary>
+          <p>隐藏属性会让文件在资源管理器里默认不显示，属于预期行为。所有改动都可撤销；「系统」属性请谨慎设置。</p>
+        </details>
+        <details class="reveal" style="--i:7">
+          <summary>安卓版和电脑版功能一样吗？</summary>
+          <p>改名、修改时间、只读、EXIF、预览、日志与一键撤销两端都有。差异来自系统本身：安卓写不了「创建时间」，没有「存档 / 系统」属性，隐藏用文件名前的「.」代替，访问时间只能显示。完整对照见页面上方的<a href="#platforms">两版能力对照</a>。</p>
+        </details>
+        <details class="reveal" style="--i:8">
+          <summary>安卓版需要什么权限？</summary>
+          <p>需要存储访问权限（Android 11 及以上是「所有文件访问权限」），否则无法改写别人目录里的照片时间与属性。应用不申请网络权限，也不读取通讯录、位置等信息。授权后仍建议先用几张照片试一遍。</p>
+        </details>
+        <details class="reveal" style="--i:9">
+          <summary>手机提示「未知来源应用」装不上？</summary>
+          <p>APK 来自 GitHub Releases，没有走应用商店，系统会拦一次。在提示里选择「仍要安装」，或到「设置 → 应用 → 特殊权限 → 安装未知应用」里允许你的浏览器 / 文件管理器安装即可。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 下载 / 联系 ============ -->
+  <section class="sec" id="download">
+    <div class="wrap">
+      <div class="dl reveal">
+        <div class="dl-copy">
+          <p class="tag light">立即开始</p>
+          <h2>把一整个文件夹的照片，一次整理干净</h2>
+          <p>Windows 单文件免安装，Android 安装包 1.3 MB，两端都完全离线。下载后先看一眼预览再执行。</p>
+          <div class="dl-act">
+            <a class="btn btn-white btn-lg" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">
+              Windows 版 · 14.8 MB
+            </a>
+            <a class="btn btn-outline-white btn-lg" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">
+              Android 版 · 1.3 MB
+            </a>
+          </div>
+          <p class="dl-note">两个按钮都会打开 GitHub Releases：Windows 选 <b>.exe</b>，Android 选 <b>.apk</b>。打不开 GitHub 时可用下方邮箱联系作者。</p>
+        </div>
+        <div class="dl-badge" aria-hidden="true">
+          <img src="assets/logo.png" alt="" width="120" height="115">
+          <span>v1.1.1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt" id="contact">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <p class="tag">联系方式</p>
+        <h2>用着有问题，直接说</h2>
+        <p class="sec-sub">下载、反馈、建议都走下面的入口：打不开 GitHub 就发邮件，其他问题欢迎提 Issue。</p>
+      </header>
+
+      <div class="cards c3">
+        <article class="contact reveal" style="--i:0">
+          <h3>GitHub 仓库</h3>
+          <p>源码、提交记录与更新说明都在这，两个平台的代码同仓维护。</p>
+          <a class="link" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor" target="_blank" rel="noopener">github.com/Lee-Ja7/Batch-Photo-File-Info-Editor →</a>
+        </article>
+        <article class="contact reveal" style="--i:1">
+          <h3>下载 Releases</h3>
+          <p>所有安装包只从 GitHub Releases 发布：Windows 取 <code>.exe</code>，Android 取 <code>.apk</code>。</p>
+          <a class="link" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">打开最新 Release →</a>
+        </article>
+        <article class="contact reveal" style="--i:2">
+          <h3>问题反馈邮箱</h3>
+          <p>访问不了 GitHub、或想私下反馈，直接发邮件；附上系统版本与出问题的文件格式会更快定位。</p>
+          <a class="link" href="mailto:lyqingfeng@163.com">lyqingfeng@163.com →</a>
+        </article>
+        <article class="contact reveal" style="--i:3">
+          <h3>Bug / 建议</h3>
+          <p>公开问题请提 Issue，方便其他人一起看到处理进度。</p>
+          <a class="link" href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/issues" target="_blank" rel="noopener">提交 Issue →</a>
+        </article>
+        <article class="contact reveal" style="--i:4">
+          <h3>产品官网</h3>
+          <p>当前页面的正式地址，功能说明与下载入口以这里为准。</p>
+          <a class="link" href="https://photo.qingfengstudio.cn" target="_blank" rel="noopener">photo.qingfengstudio.cn →</a>
+        </article>
+        <article class="contact reveal" style="--i:5">
+          <h3>作者博客</h3>
+          <p>清風的其他项目与技术记录，都在个人主页上。</p>
+          <a class="link" href="https://qingfengstudio.cn" target="_blank" rel="noopener">qingfengstudio.cn →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-brand">
+      <img src="assets/logo.png" alt="" width="36" height="34">
+      <div>
+        <b>照片信息批量处理助手by清風</b>
+        <span>批量修改照片的文件名 · 日期 · 属性 · EXIF</span>
+      </div>
+    </div>
+    <nav class="ftr-nav" aria-label="页脚导航">
+      <a href="#features">核心功能</a>
+      <a href="#platforms">双平台</a>
+      <a href="#start">快速上手</a>
+      <a href="#faq">常见问题</a>
+      <a href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Lee-Ja7/Batch-Photo-File-Info-Editor/releases/latest" target="_blank" rel="noopener">Releases 下载</a>
+      <a href="https://photo.qingfengstudio.cn" target="_blank" rel="noopener">官网</a>
+      <a href="https://qingfengstudio.cn" target="_blank" rel="noopener">作者博客</a>
+      <a href="mailto:lyqingfeng@163.com">lyqingfeng@163.com</a>
+    </nav>
+    <p class="ftr-legal">© 2026 清風 · 照片信息批量处理助手by清風 · 所有文件都在你的设备本地处理，不收集任何数据。</p>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>
